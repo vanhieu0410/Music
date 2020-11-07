@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    android:padding="4dp"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="0dp">
+
+        <TextView
+            android:id="@+id/txtRow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="1" />
+
+        <TextView
+            android:id="@+id/nameSong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@id/txtRow"
+            android:layout_toStartOf="@id/imageSong"
+            android:text="Name Song"
+            android:maxLines="1"
+            android:textColor="#0C0A0A"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtSongArtist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nameSong"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@id/txtRow"
+            android:text="Artist"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/imageSong"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:padding="2dp"
+            android:src="@drawable/song1" />
+
+    </RelativeLayout>
+</RelativeLayout>
