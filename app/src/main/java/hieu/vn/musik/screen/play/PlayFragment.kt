@@ -22,6 +22,7 @@ import hieu.vn.musik.screen.home.HomeFragment
 import kotlinx.android.synthetic.main.play_fragment.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class PlayFragment : Fragment(), PlayContract.Screen {
 
@@ -67,7 +68,7 @@ class PlayFragment : Fragment(), PlayContract.Screen {
         setTimeToTal()
         updateTimeSong()
 
-        listSongFragment?.listSongLike = mDataBase?.songFromDb as MutableList<Song>
+        listSongFragment?.listSongLike = mDataBase?.songFromDb as ArrayList<Song>
         buttonPlay.setOnClickListener {
             songController?.playSong()
             setDataToolBar(songController?.getCurrentSong())
