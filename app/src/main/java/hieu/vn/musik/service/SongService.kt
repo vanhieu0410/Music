@@ -17,13 +17,12 @@ import hieu.vn.musik.BaseUtils
 import hieu.vn.musik.ISongController
 import hieu.vn.musik.R
 import hieu.vn.musik.entities.Song
-import hieu.vn.musik.screen.home.HomeFragment
 import java.io.IOException
 
 class SongService : Service(), ISongController {
 
     var notificationManager: NotificationManager? = null
-    private var listMusic: ArrayList<Song>? = null
+    var listMusic: ArrayList<Song>? = null
     var currentSongPosition = -1
     var mediaSessionCompat: MediaSessionCompat? = null
     var newSong: Song? = null
@@ -54,8 +53,7 @@ class SongService : Service(), ISongController {
         }
         Log.d("xxx", "Size of list From service  ${listMusic?.size}")
         if (intent != null) {
-            var actionFromBroadcast: String? = ""
-            actionFromBroadcast = intent.getStringExtra("key_action")
+            val actionFromBroadcast: String? = intent.getStringExtra("key_action")
             if (actionFromBroadcast != null) {
                 when (actionFromBroadcast) {
                     BaseUtils.ACTION_BACK_SONG -> {
@@ -281,13 +279,6 @@ class SongService : Service(), ISongController {
             )
         }
 
-        val notificationIntent: Intent = Intent(this, HomeFragment::class.java)
-        notificationIntent.flags = (Intent.FLAG_ACTIVITY_CLEAR_TOP
-                or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-        val intent: PendingIntent = PendingIntent.getActivity(baseContext,0,notificationIntent,0)
-
-
-
         val pendingIntentBack: PendingIntent
         val intentBack = Intent(baseContext, SongReceiver::class.java)
                 .setAction(BaseUtils.ACTION_BACK_SONG)
@@ -314,7 +305,6 @@ class SongService : Service(), ISongController {
         )
         val builder =
                 NotificationCompat.Builder(this, BaseUtils.CHANNEL_ID)
-                        .apply { setContentIntent(intent) }
                         .setSmallIcon(R.drawable.image_default)
                         .setContentTitle(mCurrentSong?.name)
                         .setContentText(mCurrentSong?.artist)

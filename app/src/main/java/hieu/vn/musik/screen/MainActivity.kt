@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity(), ISongController, MainContract.Screen {
     companion object {
         private const val MY_PERMISSION_REQUEST : Int = 1
     }
-
     private val presenter = MainPresenter(this)
     var mSongService: SongService? = null
     var homeFragment: HomeFragment? = null
@@ -67,8 +66,6 @@ class MainActivity : AppCompatActivity(), ISongController, MainContract.Screen {
         }
     }
 
-
-
     override fun bindDataToView(listSong: List<Song>) {
         val homeFragment = HomeFragment()
         val bundle = Bundle()
@@ -79,9 +76,6 @@ class MainActivity : AppCompatActivity(), ISongController, MainContract.Screen {
             .addToBackStack(null)
             .commit()
     }
-
-
-
 
     override fun getCurrentSong(): Song? {
         return mSongService?.mCurrentSong

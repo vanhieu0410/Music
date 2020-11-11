@@ -19,6 +19,7 @@ import hieu.vn.musik.fragment.LyricFragment
 import hieu.vn.musik.fragment.PagerAdapter
 import hieu.vn.musik.fragment.SongDetailFragment
 import hieu.vn.musik.screen.home.HomeFragment
+import kotlinx.android.synthetic.main.lf_item_song.*
 import kotlinx.android.synthetic.main.play_fragment.*
 import java.text.SimpleDateFormat
 import java.util.*

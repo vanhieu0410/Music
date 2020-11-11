@@ -22,11 +22,9 @@ import java.util.ArrayList
 class HomeFragment : Fragment(), HomeContract.Screen {
     
     private val presenter = HomePresenter(this)
-
     private var songAdapter: SongAdapter? = null
     private var songController: ISongController? = null
     private var songCurrent: Song? = null
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         songController = context as ISongController
@@ -38,7 +36,6 @@ class HomeFragment : Fragment(), HomeContract.Screen {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val listSong = arguments?.getParcelableArrayList<Song>("DATA")
-
         listSong?.let {
             songAdapter = SongAdapter()
                 .setData(listSong)

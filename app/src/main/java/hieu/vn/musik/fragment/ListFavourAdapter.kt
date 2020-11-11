@@ -4,7 +4,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +12,7 @@ import hieu.vn.musik.R
 
 class ListFavourAdapter(songList: List<Song>) :
     RecyclerView.Adapter<ListFavourAdapter.ItemViewHolder>() {
-    var listSong: List<Song>
+    private var listSong: List<Song>? = null
     private var itemClick: ItemClick? = null
     var currentPosition = -1
     override fun onCreateViewHolder(
@@ -29,7 +28,7 @@ class ListFavourAdapter(songList: List<Song>) :
         holder: ItemViewHolder,
         position: Int
     ) {
-        holder.binDataSong(listSong[position])
+        holder.binDataSong(listSong?.get(position) as Song)
         if (currentPosition == position) {
             holder.setSelectedCb()
         } else {
@@ -38,7 +37,7 @@ class ListFavourAdapter(songList: List<Song>) :
     }
 
     override fun getItemCount(): Int {
-        return listSong.size
+        return listSong?.size as Int
     }
 
     fun setItemClick(itemClick: ItemClick?) {
@@ -51,10 +50,10 @@ class ListFavourAdapter(songList: List<Song>) :
     ) :
         RecyclerView.ViewHolder(itemView) {
         private var song: Song? = null
-        private val txtNameSongLF: TextView
-        private val txtArtistLF: TextView
-        private val iconMenu: ImageView
-        private val iconDelete: ImageView
+        private var txtNameSongLF: TextView
+        private var txtArtistLF: TextView
+        private var iconMenu: ImageView
+        private var iconDelete: ImageView
         fun binDataSong(song: Song) {
             this.song = song
             txtNameSongLF.setText(song.name)

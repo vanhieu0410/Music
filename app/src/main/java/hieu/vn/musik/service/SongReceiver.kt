@@ -9,10 +9,9 @@ import hieu.vn.musik.BaseUtils
 class SongReceiver: BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         Log.d("xxx", "" + intent?.action)
-        val action = intent?.action
 
 
-        when (action) {
+        when (intent?.action) {
             BaseUtils.ACTION_BACK_SONG -> {
                 val intentBack = Intent(context, SongService::class.java)
                 intentBack.putExtra("key_action", BaseUtils.ACTION_BACK_SONG)
